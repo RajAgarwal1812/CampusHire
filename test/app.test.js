@@ -49,3 +49,17 @@ test("invalid placement drive is rejected", async () => {
 
   server.close();
 });
+
+test("filtering placement drives by month works", async () => {
+  const server = app.listen(0);
+  const base = `http://127.0.0.1:${server.address().port}`;
+
+  const response = await fetch(`${base}/?month=2026-09`);
+  const html = await response.text();
+
+  assert.equal(response.status, 200);
+ assert.ok(html.includes("TCS"));
+assert.ok(!html.includes("Infosys"));
+
+  server.close();
+});
