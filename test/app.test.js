@@ -63,3 +63,17 @@ assert.ok(!html.includes("Infosys"));
 
   server.close();
 });
+
+test("GET /api/drives returns placement drives as JSON", async () => {
+  const server = app.listen(0);
+  const base = `http://127.0.0.1:${server.address().port}`;
+
+  const response = await fetch(`${base}/api/drives`);
+  const data = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.ok(Array.isArray(data));
+  assert.ok(data.some((drive) => drive.company === "TCS"));
+
+  server.close();
+});
