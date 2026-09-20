@@ -2,7 +2,7 @@ const express = require("express");
 
 const app = express();
 
-const sha = process.env.GIT_SHA || process.env.RENDER_GIT_COMMIT || "local";
+const sha = process.env.RENDER_GIT_COMMIT || process.env.GIT_SHA || "local";
 const commit = sha.slice(0, 7);
 
 app.use(express.urlencoded({ extended: true }));
