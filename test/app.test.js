@@ -78,6 +78,3 @@ test("GET /api/drives returns placement drives as JSON", async () => {
   server.close();
 });
 
-test("intentional failure demo", () => {
-  assert.equal(1, 2);
-});
